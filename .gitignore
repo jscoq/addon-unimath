@@ -1,5 +1,4 @@
-UniMath
-util
+/workdir
 coq-unimath.opam
 _build
 node_modules

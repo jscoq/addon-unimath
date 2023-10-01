@@ -1,5 +1,11 @@
 {
-  "dependencies": {
-    "jscoq": "^0.16.0"
-  }
+    "name": "@jscoq/unimath",
+    "description": "UniMath for jsCoq",
+    "version": "0.17.0",
+    "files": ["README.md", "coq-pkgs"],    
+    "repository": {
+        "type": "git",
+        "url": "github:jscoq/addon-unimath"
+    },
+    "license": "AGPL-3.0-or-later"
 }

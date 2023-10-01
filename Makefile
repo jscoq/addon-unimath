@@ -1,20 +1,17 @@
 
 REPO = https://github.com/UniMath/UniMath.git
-WORKDIR = UniMath
-
-JSCOQ_CLI = npx jscoq
+TAG = v20230420
+WORKDIR = workdir
 
 build: $(WORKDIR)
-	# Use current workspace, not jsCoq's
 	(cd $(WORKDIR) ; git pull)
-	$(JSCOQ_CLI) sdk dune build --root $(WORKDIR)
+	dune build
 
 $(WORKDIR):
-	git clone $(REPO) $(WORKDIR)
-	cp dune ./UniMath
+	git clone --recursive --depth=1 -c advice.detachedHead=false -b $(TAG) $(REPO) $(WORKDIR)
 
+# To install jsCoq SDK
 setup:
-	npm i
 	docker pull jscoq/jscoq:sdk
 	docker tag jscoq/jscoq:sdk jscoq:sdk
 	rm -rf /tmp/jscoq-sdk  # cleanup in case there was a previous build there
